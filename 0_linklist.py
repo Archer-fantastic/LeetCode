@@ -1,9 +1,4 @@
-# Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
-from math import sqrt
+
 def get_len(l):
     current_node = l
     _len = 0
