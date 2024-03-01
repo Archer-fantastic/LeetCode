@@ -1,3 +1,4 @@
+import modulefinder
 from math import inf
 from typing import Optional, List
 
@@ -181,11 +182,65 @@ class Solution:
         if not right: return left
         return root
 
+# 144. 二叉树的前中后序遍历
+
+    def preorderTraversal(self, root):
+        ans = []
+        if not root : return
+        s = [root]
+        while len(s) != 0:
+            node = s[-1]
+            if node.left:
+                s.append(node.left)
+
+            ans.append(node)
+            if node.right:
+                s.append(node.right)
+        return ans
+
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        ans, stk = [], []
+        while root or stk:
+            if root:
+                stk.append(root)
+                root = root.left
+            else:
+                root = stk.pop()
+                ans.append(root.val)
+                root = root.right
+        return ans
 
 
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        ans = []
+        if root is None:
+            return ans
+        stk = [root]
+        while stk:
+            node = stk.pop()
+            ans.append(node.val)
+            if node.left:
+                stk.append(node.left)
+            if node.right:
+                stk.append(node.right)
+        return ans[::-1]
+    # 236. 二叉树的最近公共祖先
+    def lowestCommonAncestor(self, root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
+        if root is p or root is q or p is q: return p
+        left = self.lowestCommonAncestor(root.left,p,q)
+        right = self.lowestCommonAncestor(root.right,p,q)
+        if left and right: return root
+        if left: return left
+        if right: return right
+        return root
 
-
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if p.val > q.val: p,q = q,p
+        if p.val<=root.val<=q.val: return root
+        if root.val<p.val<q.val: return self.lowestCommonAncestor(root.right,p,q)
+        if p.val<q.val<root.val: return self.lowestCommonAncestor(root.left,p,q)
 
 s = Solution()
 # print(s.inorderTraversal(bulid_tree([1,None,2,3])))
 # print(s.kthSmallest(bulid_tree([5,3,6,2,4,None,None,1]),3))
+print(s.lowestCommonAncestor(bulid_tree([3,5,1,6,2,0,8,None,None,7,4])))
