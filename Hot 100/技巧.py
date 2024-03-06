@@ -1,7 +1,22 @@
+import collections
 from typing import List
 
 
 class Solution:
+    # 136. 只出现一次的数字
+    def singleNumber(self, nums: List[int]) -> int:
+        ans = 0
+        for num in nums:
+            ans ^= num
+        return ans
+    # 287. 寻找重复数
+
+    def findDuplicate(self, nums: List[int]) -> int:
+        dic = collections.Counter(nums)
+        for key in dic:
+            if dic[key] > 1:
+                return key
+    # 75. 颜色分类
     def sortColors(self, nums: List[int]) -> None:
         i = 0
         j = 0
@@ -41,6 +56,3 @@ class Solution:
                 nums[j] = 2
                 j -= 1
         print(nums)
-s = Solution()
-s.sortColors2([2,0,2,1,1,0])
-s.sortColors2([1,0,2])

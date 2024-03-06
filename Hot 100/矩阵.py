@@ -1,7 +1,9 @@
+import copy
 from typing import List
 
 
 class Solution:
+    # 54. 螺旋矩阵
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         def fun(mat,j):
             l = []
@@ -31,8 +33,13 @@ class Solution:
         for i in range(min((m+1)//2,(n+1)//2)):
             ans.extend(fun(matrix,i))
         return ans
+    # 48. 旋转图像
+    def rotate(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        n = copy.deepcopy(matrix)
+        matrix = [[x[i] for x in n[::-1]] for i in range(len(n))]
+        print(matrix)
 s = Solution()
-print(s.spiralOrder(matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]))
-print(s.spiralOrder(matrix = [[1,2,3],[10,11,4],[9,12,5],[8,7,6]]))
-print(s.spiralOrder(matrix = [[3],[2]]))
-print(s.spiralOrder(matrix = [[6,9,7]]))
+s.rotate([[1,2,3],[4,5,6],[7,8,9]])

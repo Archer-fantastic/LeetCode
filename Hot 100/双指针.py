@@ -1,7 +1,42 @@
 from typing import List
 
 
-class Solution:
+class Solution(object):
+    # 283. 移动零
+    def moveZeroes(self, nums):
+        low = 0
+        n = len(nums)
+        for fast in range(n):
+            if nums[fast] != 0:
+                nums[low] = nums[fast]
+                if fast != low:
+                    nums[fast] = 0
+                low += 1
+    def moveZeroes2(self, nums):
+        low = 0
+        n = len(nums)
+        for fast in range(n):
+            if nums[fast] != 0:
+                nums[low] = nums[fast]
+                low += 1
+        for idx in range(low,n):
+            nums[idx] = 0
+
+        print(nums)
+    # 11. 乘最多水的容器
+    def maxArea(self, height: List[int]) -> int:
+        n = len(height)
+        left = 0
+        right = n - 1
+        max_area = 0
+        while left < right:
+            max_area = max(max_area, (right - left) * min(height[left], height[right]))
+            if height[left] <= height[right]:
+                left += 1
+            else:
+                right -= 1
+        return max_area
+    # 15. 三数之和
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         # 针对一些[-1,0,1]*50这种情况做了一些优化
         # 要想让三数之和为0，要么是3个0，要么是 正/负/0的混合，不可能会出现三正或者三负的情况
@@ -44,8 +79,6 @@ class Solution:
                     while j < k and array[j] == array[j - 1]: j += 1
         return ans
 
-s =Solution()
-print(s.threeSum(nums = [-1,0,1,2,-1,-4]))
-print(s.threeSum(nums = [0,1,1]))
-print(s.threeSum(nums = [-1,0,1]*50))
-
+s = Solution()
+s.moveZeroes2([0,1,0,3,12])
+s.moveZeroes2([1])
