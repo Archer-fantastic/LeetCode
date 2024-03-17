@@ -73,6 +73,23 @@ class Solution:
             stk.append(idx)
         return ans
 
+def fun():
+    t = int(input())
+
+    l = []
+    for i in range(t):
+      tt = int(input())
+      l.append(tt)
+
+    for i in range(t):
+      a = 1
+      b = 1
+      for j in range(l[i]-2):
+        c = (a + b) % (1000000000 + 7)
+        a = b
+        b = c
+      print(b)
+
 
 
 s = Solution()
@@ -84,5 +101,7 @@ s = Solution()
 # print(s.decodeString("abc10[cd]xyz"))
 # print(s.decodeString("100[leetcode]"))
 #
-print(s.dailyTemperatures(temperatures = [73, 74, 75, 71, 69, 72, 76, 73]))
-print(s.dailyTemperatures([89,62,70,58,47,47,46,76,100,70]))
+# print(s.dailyTemperatures(temperatures = [73, 74, 75, 71, 69, 72, 76, 73]))
+# print(s.dailyTemperatures([89,62,70,58,47,47,46,76,100,70]))
+
+fun()
