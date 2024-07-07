@@ -63,6 +63,26 @@ class Solution:
                 idx1 -= 1
 
         return -1
+# class Solution(object):
+#     def maximizeSquareArea(self, m, n, hFences, vFences):
+#         h=set([m-1])
+#         for i in range(len(hFences)):
+#             h.add(hFences[i]-1)
+#             h.add(m-hFences[i])
+#             for j in range(i+1,len(hFences)):
+#                 h.add(abs(hFences[i]-hFences[j]))
+#         v=set([n-1])
+#         for i in range(len(vFences)):
+#             v.add(vFences[i]-1)
+#             v.add(n-vFences[i])
+#             for j in range(i+1,len(vFences)):
+#                 v.add(abs(vFences[i]-vFences[j]))
+#         v=sorted(list(v))
+#         i=len(v)-1
+#         while i>=0 and v[i] not in h:
+#             i-=1
+#         #print h,v
+#         return -1 if i<0 else (v[i]*v[i])%(10**9+7)
 
 s = Solution()
 # print(s.maximizeSquareArea2(m = 4, n = 3, hFences = [2,3], vFences = [2]))

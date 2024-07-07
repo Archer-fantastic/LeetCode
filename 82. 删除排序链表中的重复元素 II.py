@@ -18,7 +18,7 @@ class Solution(object):
                 dic[cur_node.val] += 1
 
             cur_node = cur_node.next
-        new_head = ListNode("tmp head", next=head)
+        new_head = ListNode("input.txt head", next=head)
         pre = new_head
         cur_node = head
         while cur_node:
